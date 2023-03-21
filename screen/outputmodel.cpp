@@ -603,7 +603,7 @@ bool OutputModel::setReplicationSourceIndex(int outputIndex, int sourceIndex)
             return false;
         }
         m_config->setReplicationSource(output.ptr, nullptr);
-        output.ptr->setExplicitLogicalSize(QSizeF());
+        output.ptr->setLogicalSize(QSizeF());
         resetPosition(output);
     } else {
         const auto source = m_outputs[sourceIndex].ptr;
@@ -614,7 +614,7 @@ bool OutputModel::setReplicationSourceIndex(int outputIndex, int sourceIndex)
         m_config->setReplicationSource(output.ptr, source);
         output.posReset = output.ptr->pos();
         output.ptr->setPos(source->pos());
-        output.ptr->setExplicitLogicalSize(source->explicitLogicalSize());
+        output.ptr->setLogicalSize(source->logicalSize());
     }
 
     reposition();
